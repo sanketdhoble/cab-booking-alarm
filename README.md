@@ -13,10 +13,10 @@
 
 ## Implementation Details : 
 1. User provides all necessary inputs.
-2. Once he sets the reminder, both the Maps and Uber API are called to check if it is already time to book a cab. 
-	a. If yes, remind the user. 
-	b. If no, then the following cases arise 
-		i. We are already within the worst case time, then check the revised times after every 1 minute e.g Scheduled Time : 10:00 AM, Travel Time : 10 Mins, Cab Arrival Time : 2 Mins So worst case the user takes (10 +60 i.e maximum deviation) + 15 i.e worst case of Uber = 85 Minutes that evaluates to 8:35 AM So if the user sets the reminder after 8:35 AM, check every minute to minimize risk of delay, else go to 2nd case. 
+2. Once he sets the reminder, both the Maps and Uber API are called to check if it is already time to book a cab. <br />
+	a. If yes, remind the user. <br />
+	b. If no, then the following cases arise <br />
+		i. We are already within the worst case time, then check the revised times after every 1 minute e.g Scheduled Time : 10:00 AM, Travel Time : 10 Mins, Cab Arrival Time : 2 Mins So worst case the user takes (10 +60 i.e maximum deviation) + 15 i.e worst case of Uber = 85 Minutes that evaluates to 8:35 AM So if the user sets the reminder after 8:35 AM, check every minute to minimize risk of delay, else go to 2nd case. <br />
 		ii. We haven't yet reached the worst case time, so recheck only after we
 		have reached at the worst case time and then keep checking every
 		minute from then on.
