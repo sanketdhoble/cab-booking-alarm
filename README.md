@@ -1,9 +1,9 @@
 # CabApp
 
-##Inputs : 
+## Inputs : 
 1. Source and Destination in the format < latitude, longitude>  The time at which he or she needs to reach at the destination
 
-##Assumptions taken :
+## Assumptions taken :
 1. The user has time in hand to book a cab. 
 2. The time at which he/she expects to reach is not beyond the day of setting the reminder. 
 3. An Uber Go is the required means of transportation and is assumed to be always available. 
@@ -11,7 +11,7 @@
 5. Maximum time taken by the cab to reach the pickup point has been capped to 15 Minutes. 
 
 
-##Implementation Details : 
+## Implementation Details : 
 1. User provides all necessary inputs.
 2. Once he sets the reminder, both the Maps and Uber API are called to check if it is already time to book a cab. 
 	a. If yes, remind the user. 
