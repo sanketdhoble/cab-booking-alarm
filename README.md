@@ -1,28 +1,22 @@
 # CabApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.1.
+##Inputs : 
+1. Source and Destination in the format < latitude, longitude>  The time at which he or she needs to reach at the destination
 
-## Development server
+##Assumptions taken :
+1. The user has time in hand to book a cab. 
+2. The time at which he/she expects to reach is not beyond the day of setting the reminder. 
+3. An Uber Go is the required means of transportation and is assumed to be always available. 
+4. Travel time provided my Go o gle Maps will have a maximum deviation of 60 Minutes. 
+5. Maximum time taken by the cab to reach the pickup point has been capped to 15 Minutes. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+##Implementation Details : 
+1. User provides all necessary inputs.
+2. Once he sets the reminder, both the Maps and Uber API are called to check if it is already time to book a cab. 
+	a. If yes, remind the user. 
+	b. If no, then the following cases arise 
+		i. We are already within the worst case time, then check the revised times after every 1 minute e.g Scheduled Time : 10:00 AM, Travel Time : 10 Mins, Cab Arrival Time : 2 Mins So worst case the user takes (10 +60 i.e maximum deviation) + 15 i.e worst case of Uber = 85 Minutes that evaluates to 8:35 AM So if the user sets the reminder after 8:35 AM, check every minute to minimize risk of delay, else go to 2nd case. 
+		ii. We haven't yet reached the worst case time, so recheck only after we
+		have reached at the worst case time and then keep checking every
+		minute from then on.
